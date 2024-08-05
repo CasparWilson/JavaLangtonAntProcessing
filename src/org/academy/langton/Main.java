@@ -32,7 +32,7 @@ public class Main extends PApplet {
         ant = new Ant(this, ground, startPos);
 
         //You can speed things up or down, here:
-        frameRate(3);
+        frameRate(10);
     }
 
     @Override

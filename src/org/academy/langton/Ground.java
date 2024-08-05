@@ -66,7 +66,7 @@ public class Ground {
         applet.stroke(100);
         for (List<Cell> rowOfCells : rowsOfCells) {
             for (Cell cell : rowOfCells) {
-                applet.fill(cell.isActive() ? 40 : 255);
+                applet.fill(cell.getColour());
                 Ground.drawSquareAtGridPosition(
                         cell.gridPosition(), applet, cellSize);
             }

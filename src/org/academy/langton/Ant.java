@@ -42,12 +42,12 @@ public class Ant {
         // At a black square, turn 90° left, flip the color of the square, move forward one unit
 
         Cell currentCell = ground.cellAt(this.gridPosition);
-        if(currentCell.isActive()) {
+        if(currentCell.getColour() == 255) {
             turnCounterclockwise();
-        } else {
+        } else if (currentCell.getColour() == 0) {
             turnClockwise();
         }
-        currentCell.toggleActive();
+        currentCell.updateColour();
         moveForward();
         }
 
