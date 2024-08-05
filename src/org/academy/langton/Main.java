@@ -2,10 +2,12 @@ package org.academy.langton;
 
 import processing.core.PApplet;
 
+import java.util.Random;
+
 //TODO: remove this javascript implementation link
 //https://openprocessing.org/sketch/2248058
 public class Main extends PApplet {
-    private Ant ant;
+    private Ant[] ants;
     private Ground ground;
     private final int pixelWidth = 800;
     private final int pixelHeight = 800;
@@ -26,10 +28,13 @@ public class Main extends PApplet {
         int numRows = pixelHeight / cellSize;
         ground = new Ground(this, numColumns, numRows, cellSize);
 
-        //where to start our ant?
-        GridPosition startPos = new GridPosition(numColumns / 2, numRows / 2);
+        Random random = new Random();
 
-        ant = new Ant(this, ground, startPos);
+        ants = new Ant[10];
+        for (int i = 0; i < ants.length; i++) {
+            GridPosition startPos = new GridPosition(random.nextInt(numColumns), random.nextInt(numRows));
+            ants[i] = new Ant(this, ground, startPos);
+        }
 
         //You can speed things up or down, here:
         frameRate(10);
@@ -39,7 +44,9 @@ public class Main extends PApplet {
     public void draw() {
         background(200);
         ground.draw();
-        ant.display();
-        ant.update();
+        for(Ant ant : ants) {
+            ant.display();
+            ant.update();
+        }
     }
 }
